@@ -1,0 +1,13 @@
+ARGUMENTS
+directory - directory containing the Samsung Accelerometer data, defaults to working directory.
+
+FUNCTION STEPS
+1. Sets working directory to the assigned directory using the 'directory' argument
+2. Reads necessary files from the directory using the read.table function
+3. Adds descriptive variable names to the subject and activity data sets
+4. Assigns descriptive activity names in place of id numbers in the activity data set
+5. Combines the test and train data sets in all the raw data, subject data, and activity data using the rbind function
+6. Uses the cbind function to merge the raw, subject, and activity data into one data frame
+7. Takes a subset of the previous data frame extracting only data regarding means and standard deviations
+8. Uses the reshape2 package to reshape the data and summarize with the average of each variable for each activity and each subject
+9. Returns the dataset from step 8
