@@ -1,6 +1,24 @@
 ARGUMENTS
 directory - directory containing the Samsung Accelerometer data, defaults to working directory.
 
+VARIABLE NAMES
+features - result of running the read.table function on the "features.txt" file
+testraw - result of running the read.table funtion on the "X_test.txt" file in the 'test' sub-directory
+ytest - data frame containing the activity ids from the "y_test.txt" file
+subjecttest - data frame containing the subject ids from the "subject_test.txt" file
+trainraw - result of running the read.table function on the "X_train.txt" file
+ytrain - data frame containing the activity ids from the "y_train.txt" file
+subjecttrain - data frame containing the subject ids from the "subject_train.txt" file
+subjectall - the combination of the subjecttest and the subjecttrain datasets using rbind
+yall - the combination of the ytest and train datasets using rbind
+allraw - the result of the rbind function on the testraw and trainraw
+allwanted - a subset of allraw which only includes the data regarding standard deviation and mean
+allfinal - the result of the cbind function on the subjectall, yall, and allwanted datasets
+melt - a reshaping of the allfinal dataset in order to allow for the mean calculations by subject/activity and variable
+subjectmeans - a dcast of 'melt' by subject and variable
+activitymeans - a dcast of 'melt' by activity and variable
+meanstable - a cbind of the subjectmeans and activitymeans data frames
+
 FUNCTION STEPS
 1. Sets working directory to the assigned directory using the 'directory' argument
 2. Reads necessary files from the directory using the read.table function
@@ -8,6 +26,6 @@ FUNCTION STEPS
 4. Assigns descriptive activity names in place of id numbers in the activity data set
 5. Combines the test and train data sets in all the raw data, subject data, and activity data using the rbind function
 6. Uses the cbind function to merge the raw, subject, and activity data into one data frame
-7. Takes a subset of the previous data frame extracting only data regarding means and standard deviations
+7. Takes a subset of the previous data frame extracting only data regarding means and standard deviations, this data frame will be found in the global environment and will be called 'allfinal'
 8. Uses the reshape2 package to reshape the data and summarize with the average of each variable for each activity and each subject
-9. Returns the dataset from step 8
+9. Returns the dataset from step 8, this will also be found in the global environment called 'meanstable'
