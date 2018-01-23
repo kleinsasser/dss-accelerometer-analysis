@@ -2,22 +2,9 @@ ARGUMENTS
 directory - directory containing the Samsung Accelerometer data, defaults to working directory.
 
 VARIABLE NAMES
-features - result of running the read.table function on the "features.txt" file
-testraw - result of running the read.table funtion on the "X_test.txt" file in the 'test' sub-directory
-ytest - data frame containing the activity ids from the "y_test.txt" file
-subjecttest - data frame containing the subject ids from the "subject_test.txt" file
-trainraw - result of running the read.table function on the "X_train.txt" file
-ytrain - data frame containing the activity ids from the "y_train.txt" file
-subjecttrain - data frame containing the subject ids from the "subject_train.txt" file
-subjectall - the combination of the subjecttest and the subjecttrain datasets using rbind
-yall - the combination of the ytest and train datasets using rbind
-allraw - the result of the rbind function on the testraw and trainraw
-allwanted - a subset of allraw which only includes the data regarding standard deviation and mean
-allfinal - the result of the cbind function on the subjectall, yall, and allwanted datasets
-melt - a reshaping of the allfinal dataset in order to allow for the mean calculations by subject/activity and variable
-subjectmeans - a dcast of 'melt' by subject and variable
-activitymeans - a dcast of 'melt' by activity and variable
-meanstable - a cbind of the subjectmeans and activitymeans data frames
+subject - id of the subject who was wearing the accelerometer from which the data was recorded
+activity - descriptive activity name of the actions being performed while the data was being collected
+columns 3:68 - accelerometer data as described by the following link specifically. http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 FUNCTION STEPS
 1. Sets working directory to the assigned directory using the 'directory' argument
